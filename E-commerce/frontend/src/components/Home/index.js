@@ -2,12 +2,15 @@ import { Component } from "react";
 import Cookies from "js-cookie";
 import Header from "../Header";
 import { AiOutlinePlusSquare, AiOutlineMinusSquare } from "react-icons/ai";
+import {BsSearch} from 'react-icons/bs'
+import PuffLoader from "react-spinners/PuffLoader";
 import "./index.css";
 
 class Home extends Component {
   state = {
     products: [],
     quantity: 1,
+    searchInput:""
   };
 
   componentDidMount() {
@@ -15,8 +18,13 @@ class Home extends Component {
   }
 
   fetchProducts = async () => {
+    const jwt_token = Cookies.get("jwt_token")
     try {
-      const response = await fetch("http://localhost:3000/products");
+      const response = await fetch("http://localhost:3010/products",{
+        headers: {
+          Authorization: `Bearer ${jwt_token}`,
+        },
+      });
       const data = await response.json();
       this.setState({ products: data });
     } catch (error) {
@@ -61,16 +69,41 @@ class Home extends Component {
     }));
   };
 
+  onSearchInput = (e) => {
+    this.setState({searchInput: e.target.value})
+  }
+
+  renderLoader = () => {
+    return (
+      <div className="loader-box">
+        <PuffLoader
+          color="#F7931E"
+          loading={true}
+          size={100}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
+      </div>
+    );
+  };
+
   render() {
-    const { products, quantity } = this.state;
+    const { products, quantity, searchInput } = this.state;
+    const searchList = products.filter(eachItem => 
+      eachItem.title.toLowerCase().includes(searchInput.toLowerCase())
+    );
 
     return (
       <div className="home-container">
         <Header />
         <div className="all-products-container">
-          <h1>All Products</h1>
+          <h1 className="home-heading">All Products</h1>
+          <div className="search-input">
+            <BsSearch className="search-icon"/>
+            <input type="text" placeholder="Search" value={searchInput} onChange={this.onSearchInput}/>
+          </div>
           <ul className="products-list">
-            {products.map((product) => (
+            {searchList.map((product) => (
               <li className="product-item">
                 <img
                   src={product.image_url}
@@ -90,6 +123,7 @@ class Home extends Component {
                     />
                   </div>
                 </div>
+                <div className="quantity-add-conatiner">
                 <div className="increment-decrement-container">
                   <AiOutlineMinusSquare
                     className="cart-item-quantity-icon"
@@ -107,6 +141,7 @@ class Home extends Component {
                 >
                   Add to Cart
                 </button>
+                </div>
               </li>
             ))}
           </ul>

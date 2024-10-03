@@ -1,6 +1,6 @@
 import { Component } from "react";
 import Cookies from "js-cookie";
-import { withRouter, Redirect, Link } from "react-router-dom";
+import { withRouter, Redirect } from "react-router-dom";
 import "./index.css";
 
 class Register extends Component {
@@ -21,15 +21,15 @@ class Register extends Component {
     const { username, password, name, email } = this.state;
     const userDetails = { username, password, name, email };
     console.log(username);
-    const response = await fetch("http://localhost:3000/register", {
+    const response = await fetch("http://localhost:3010/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(userDetails),
     });
 
     if (response.ok) {
-      alert("Register Successfully!");
       this.props.history.replace("/login");
+      alert("Register Successfully!");
     } else {
       alert("Invalid Register");
     }

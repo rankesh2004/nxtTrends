@@ -15,7 +15,7 @@ class Orders extends Component {
   fetchOrders = async () => {
     const token = Cookies.get("jwt_token");
     try {
-      const response = await fetch("http://localhost:3000/orders", {
+      const response = await fetch("http://localhost:3010/orders", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

@@ -17,7 +17,7 @@ class Cart extends Component {
   fetchCartItems = async () => {
     const token = Cookies.get("jwt_token");
     try {
-      const response = await fetch("http://localhost:3000/cart", {
+      const response = await fetch("http://localhost:3010/cart", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -89,6 +89,11 @@ class Cart extends Component {
         <div className="cart-responsive-box">
           {cartItems.length === 0 ? (
             <div className="empty-cart-box">
+              <img
+                src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-cart-icon.png"
+                alt="nav cart"
+                className="Empty-img"
+              />
               <h1 className="no-orders-text">No Orders Yet!</h1>
               <p className="cart-empty-text">
                 Your cart is empty. Add something from the menu.

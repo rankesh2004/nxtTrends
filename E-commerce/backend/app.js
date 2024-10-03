@@ -17,8 +17,8 @@ const initializeDBAndServer = async () => {
     driver: sqlite3.Database,
   });
 
-  app.listen(3000, () => {
-    console.log("Server is running at http://localhost:3000/");
+  app.listen(3010, () => {
+    console.log("Server is running at http://localhost:3010/");
   });
 };
 
@@ -26,7 +26,7 @@ initializeDBAndServer();
 
 app.use(
   cors({
-    origin: "http://localhost:3001",
+    origin: "http://localhost:3004",
     methods: "GET,POST,PUT,DELETE",
     allowedHeaders: "Content-Type,Authorization",
   })
@@ -141,7 +141,7 @@ app.delete("/users/:userId", authenticateToken, async (req, res) => {
 // Product Management
 
 // View all products
-app.get("/products", async (req, res) => {
+app.get("/products", authenticateToken, async (req, res) => {
   const selectProductsQuery = "SELECT * FROM product;";
   const products = await db.all(selectProductsQuery);
   res.send(products);

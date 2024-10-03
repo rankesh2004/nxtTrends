@@ -18,7 +18,7 @@ class Login extends Component {
     const { username, password } = this.state;
     const { history } = this.props;
 
-    const response = await fetch("http://localhost:3000/login", {
+    const response = await fetch("http://localhost:3010/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, password }),
@@ -27,8 +27,8 @@ class Login extends Component {
     const data = await response.json();
     if (response.ok) {
       Cookies.set("jwt_token", data.jwtToken, { expires: 10 });
-      alert("Login successful");
       history.replace("/");
+      alert("Login successful");
     } else {
       alert(data.message || "Error");
     }
