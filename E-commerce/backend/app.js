@@ -17,8 +17,8 @@ const initializeDBAndServer = async () => {
     driver: sqlite3.Database,
   });
 
-  app.listen(3010, () => {
-    console.log("Server is running at http://localhost:3010/");
+  app.listen(3000, () => {
+    console.log("Server is running at http://localhost:3000/");
   });
 };
 
@@ -26,7 +26,7 @@ initializeDBAndServer();
 
 app.use(
   cors({
-    origin: "http://localhost:3004",
+    origin: "http://localhost:3001",
     methods: "GET,POST,PUT,DELETE",
     allowedHeaders: "Content-Type,Authorization",
   })

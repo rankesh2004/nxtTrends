@@ -1,5 +1,5 @@
 import Cookies from "js-cookie";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 import "./index.css";
 
@@ -35,15 +35,15 @@ const Header = (props) => {
             alt="website logo"
           />
           <ul className="nav-menu">
-            <Link className="remove-line" to="/">
+            <a className="remove-line" href="/">
               <li className="nav-menu-item">Home</li>
-            </Link>
-            <Link className="remove-line" to="/cart">
+            </a>
+            <a className="remove-line" href="/cart">
               <li className="nav-menu-item">Cart</li>
-            </Link>
-            <Link className="remove-line" to="/order">
+            </a>
+            <a className="remove-line" href="/order">
               <li className="nav-menu-item">Orders</li>
-            </Link>
+            </a>
           </ul>
           <button
             type="button"
@@ -56,7 +56,7 @@ const Header = (props) => {
       </div>
       <div className="nav-menu-mobile">
         <ul className="nav-menu-list-mobile">
-          <Link className="remove-line" to="/">
+          <a className="remove-line" href="/">
             <li className="nav-menu-item-mobile">
               <img
                 src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-home-icon.png"
@@ -64,8 +64,8 @@ const Header = (props) => {
                 className="nav-bar-img"
               />
             </li>
-          </Link>
-          <Link className="remove-line" to="/cart">
+          </a>
+          <a className="remove-line" href="/cart">
             <li className="nav-menu-item-mobile">
               <img
                 src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-cart-icon.png"
@@ -73,8 +73,8 @@ const Header = (props) => {
                 className="nav-bar-img"
               />
             </li>
-          </Link>
-          <Link className="remove-line" to="/order">
+          </a>
+          <a className="remove-line" href="/order">
             <li className="nav-menu-item-mobile">
               <img
                 src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-products-icon.png"
@@ -82,7 +82,7 @@ const Header = (props) => {
                 className="nav-bar-img"
               />
             </li>
-          </Link>
+          </a>
         </ul>
       </div>
     </nav>

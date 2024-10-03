@@ -21,7 +21,7 @@ class Register extends Component {
     const { username, password, name, email } = this.state;
     const userDetails = { username, password, name, email };
     console.log(username);
-    const response = await fetch("http://localhost:3010/register", {
+    const response = await fetch("http://localhost:3000/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(userDetails),
