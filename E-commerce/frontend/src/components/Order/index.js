@@ -82,11 +82,15 @@ class Orders extends Component {
                 <div className="cart-responsive-box">
                   {orders.length === 0 ? (
                     <div className="empty-cart-box">
+                      <img
+                        src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-products-icon.png"
+                        alt="nav products"
+                      />
                       <h1 className="no-orders-text">No Orders Yet!</h1>
                       <p className="cart-empty-text">
                         Your order is empty. Add something from the menu.
                       </p>
-                      <a href="/">
+                      <a href="/products">
                         <button className="order-btn">Order Now</button>
                       </a>
                     </div>

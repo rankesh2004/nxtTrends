@@ -69,7 +69,9 @@ class Cart extends Component {
         body: JSON.stringify({ cartItems }),
       });
       if (response.ok) {
+        localStorage.setItem("cart_count", 0);
         alert("Order placed successfully");
+        this.props.history.replace("/order");
         this.setState({ cartItems: [] });
       } else {
         alert("Failed to place order. Please try again.");
@@ -115,7 +117,7 @@ class Cart extends Component {
       (acc, item) => acc + item.price * item.quantity,
       0
     );
-
+    const cartCount = localStorage.setItem("cart_count", cartItems.length);
     return (
       <>
         {isFailure ? (
@@ -139,7 +141,7 @@ class Cart extends Component {
                       <p className="cart-empty-text">
                         Your cart is empty. Add something from the menu.
                       </p>
-                      <a href="/">
+                      <a href="/products">
                         <button className="order-btn">Order Now</button>
                       </a>
                     </div>

@@ -174,7 +174,7 @@
   opacity: 0.8;
 }
 
-.empty-cart-box{
+.empty-cart-box {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -182,18 +182,19 @@
   height: 100vh;
 }
 
-.no-orders-text{
+.no-orders-text {
   color: #3e4c59;
   font-size: 25px;
 }
 
-.cart-empty-text{
+.cart-empty-text {
   color: #475569;
   font-size: 20px;
   margin: 10px;
+  text-align: center;
 }
 
-.order-btn{
+.order-btn {
   background-color: #1271ff;
   color: white;
   padding: 10px;

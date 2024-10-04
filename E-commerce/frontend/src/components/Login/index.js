@@ -1,6 +1,6 @@
 import { Component } from "react";
 import Cookies from "js-cookie";
-import { withRouter, Redirect } from "react-router-dom";
+import { withRouter, Redirect, Link } from "react-router-dom";
 import "./index.css";
 
 class Login extends Component {
@@ -40,30 +40,61 @@ class Login extends Component {
       return <Redirect to="/" />;
     }
     return (
-      <div className="login-container">
-        <form onSubmit={this.handleLogin} className="login-form">
-          <h1>Login</h1>
-          <input
-            type="text"
-            name="username"
-            placeholder="Username"
-            value={this.state.username}
-            onChange={this.handleInputChange}
-            required
+      <div class="login-form-container">
+        <form class="form-container" onSubmit={this.handleLogin}>
+          <img
+            src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-logo-img.png"
+            class="login-website-logo-desktop-img"
+            alt="website logo"
           />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={this.state.password}
-            onChange={this.handleInputChange}
-            required
-          />
-          <button type="submit">Login</button>
-          <a href="/register" className="register-btn">
-            Register
-          </a>
+          <div class="input-container">
+            <label class="input-label" htmlFor="username">
+              Username
+            </label>
+            <input
+              class="input-field"
+              type="text"
+              name="username"
+              placeholder="Username"
+              value={this.state.username}
+              onChange={this.handleInputChange}
+              required
+            />
+          </div>
+          <div class="input-container">
+            <label class="input-label" htmlFor="password">
+              Password
+            </label>
+            <input
+              class="input-field"
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={this.state.password}
+              onChange={this.handleInputChange}
+              required
+            />
+          </div>
+          <button type="submit" class="login-button">
+            Login
+          </button>
+          <p className="or-para">or</p>
+          <Link to="/register" className="link">
+            <button type="button" class="login-button">
+              SignUp
+            </button>
+          </Link>
         </form>
+        <img
+          src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-login-img.png"
+          class="login-img"
+          alt="website login"
+        />
+        <img
+          src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-logo-img.png"
+          class="login-website-logo-mobile-img"
+          alt="website logo"
+        />
       </div>
     );
   }

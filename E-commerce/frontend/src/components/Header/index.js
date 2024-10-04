@@ -1,6 +1,7 @@
 import Cookies from "js-cookie";
-import { withRouter } from "react-router-dom";
-
+import { withRouter, Link } from "react-router-dom";
+import { IoBag } from "react-icons/io5";
+import { MdOutlineLogout } from "react-icons/md";
 import "./index.css";
 
 const Header = (props) => {
@@ -9,6 +10,7 @@ const Header = (props) => {
     Cookies.remove("jwt_token");
     history.replace("/login");
   };
+  const cartCount = localStorage.getItem("cart_count");
   return (
     <nav className="nav-header">
       <div className="nav-content">
@@ -19,7 +21,7 @@ const Header = (props) => {
             alt="website logo"
           />
 
-          <button type="button" className="nav-mobile-btn">
+          <button type="button" className="nav-mobile-btn" onClick={onLogout}>
             <img
               src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-log-out-img.png"
               alt="nav logout"
@@ -35,28 +37,33 @@ const Header = (props) => {
             alt="website logo"
           />
           <ul className="nav-menu">
-            <a className="remove-line" href="/">
+            <Link className="remove-line" to="/">
               <li className="nav-menu-item">Home</li>
-            </a>
-            <a className="remove-line" href="/cart">
-              <li className="nav-menu-item">Cart</li>
-            </a>
-            <a className="remove-line" href="/order">
+            </Link>
+            <Link className="remove-line" to="/products">
+              <li className="nav-menu-item">Products</li>
+            </Link>
+            <Link className="remove-line" to="/cart">
+              <li className="nav-menu-item">
+                Cart<span className="cart-count">{cartCount}</span>
+              </li>
+            </Link>
+            <Link className="remove-line" to="/order">
               <li className="nav-menu-item">Orders</li>
-            </a>
+            </Link>
           </ul>
           <button
             type="button"
             className="logout-desktop-btn"
             onClick={onLogout}
           >
-            Logout
+            <MdOutlineLogout /> Logout
           </button>
         </div>
       </div>
       <div className="nav-menu-mobile">
         <ul className="nav-menu-list-mobile">
-          <a className="remove-line" href="/">
+          <Link className="remove-line" to="/">
             <li className="nav-menu-item-mobile">
               <img
                 src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-home-icon.png"
@@ -64,17 +71,23 @@ const Header = (props) => {
                 className="nav-bar-img"
               />
             </li>
-          </a>
-          <a className="remove-line" href="/cart">
+          </Link>
+          <Link className="remove-line" to="/products">
+            <li className="nav-menu-item-mobile">
+              <IoBag className="nav-bag-img" />
+            </li>
+          </Link>
+          <Link className="remove-line" to="/cart">
             <li className="nav-menu-item-mobile">
               <img
                 src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-cart-icon.png"
                 alt="nav cart"
                 className="nav-bar-img"
               />
+              <span className="cart-count">{cartCount}</span>
             </li>
-          </a>
-          <a className="remove-line" href="/order">
+          </Link>
+          <Link className="remove-line" to="/order">
             <li className="nav-menu-item-mobile">
               <img
                 src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-products-icon.png"
@@ -82,7 +95,7 @@ const Header = (props) => {
                 className="nav-bar-img"
               />
             </li>
-          </a>
+          </Link>
         </ul>
       </div>
     </nav>

@@ -1,6 +1,6 @@
 import { Component } from "react";
 import Cookies from "js-cookie";
-import { withRouter, Redirect } from "react-router-dom";
+import { withRouter, Redirect, Link } from "react-router-dom";
 import "./index.css";
 
 class Register extends Component {
@@ -41,56 +41,86 @@ class Register extends Component {
       return <Redirect to="/" />;
     }
     return (
-      <div className="register-container">
-        <form onSubmit={this.handleRegister} className="register-form">
-          <h1>Register</h1>
-          <input
-            type="text"
-            name="name"
-            placeholder="Name"
-            onChange={this.handleInputChange}
-            value={this.state.name}
-            required
-            className="register-input"
+      <div class="Register-container">
+        <form class="form-container" onSubmit={this.handleRegister}>
+          <img
+            src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-logo-img.png"
+            class="login-website-logo-desktop-img"
+            alt="website logo"
           />
-          <input
-            type="text"
-            name="username"
-            placeholder="Username"
-            onChange={this.handleInputChange}
-            value={this.state.username}
-            required
-            className="register-input"
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            onChange={this.handleInputChange}
-            value={this.state.password}
-            required
-            className="register-input"
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            onChange={this.handleInputChange}
-            value={this.state.email}
-            className="register-input"
-            required
-          />
-          <button
-            type="submit"
-            className="register-button"
-            onClick={this.handleRegister}
-          >
-            Register
+          <div class="input-container">
+            <label class="input-label" htmlFor="username">
+              Name
+            </label>
+            <input
+              type="text"
+              name="name"
+              placeholder="Name"
+              onChange={this.handleInputChange}
+              value={this.state.name}
+              required
+              className="input-field"
+            />
+          </div>
+          <div class="input-container">
+            <label class="input-label" htmlFor="username">
+              Username
+            </label>
+            <input
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Username"
+              onChange={this.handleInputChange}
+              value={this.state.username}
+              required
+              className="input-field"
+            />
+          </div>
+          <div class="input-container">
+            <label class="input-label" htmlFor="password">
+              Password
+            </label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Password"
+              onChange={this.handleInputChange}
+              value={this.state.password}
+              required
+              className="input-field"
+            />
+          </div>
+          <div class="input-container">
+            <label class="input-label" htmlFor="Email">
+              Email
+            </label>
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              onChange={this.handleInputChange}
+              value={this.state.email}
+              className="input-field"
+              required
+            />
+          </div>
+          <button type="submit" class="login-button">
+            SignUp
           </button>
-          <a href="/login" className="login-btn">
-            Login
-          </a>
+          <p className="or-para">or</p>
+          <Link to="/register" className="link">
+            <button type="button" class="login-button">
+              Login
+            </button>
+          </Link>
         </form>
+        <img
+          src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-logo-img.png"
+          class="login-website-logo-mobile-img"
+          alt="website logo"
+        />
       </div>
     );
   }
