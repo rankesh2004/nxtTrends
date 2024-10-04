@@ -1,7 +1,7 @@
 import Cookies from "js-cookie";
 import { withRouter, Link } from "react-router-dom";
 import { IoBag } from "react-icons/io5";
-import { MdOutlineLogout } from "react-icons/md";
+import { CgProfile } from "react-icons/cg";
 import "./index.css";
 
 const Header = (props) => {
@@ -20,7 +20,6 @@ const Header = (props) => {
             src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-logo-img.png"
             alt="website logo"
           />
-
           <button type="button" className="nav-mobile-btn" onClick={onLogout}>
             <img
               src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-log-out-img.png"
@@ -51,13 +50,19 @@ const Header = (props) => {
             <Link className="remove-line" to="/order">
               <li className="nav-menu-item">Orders</li>
             </Link>
+            <Link className="remove-line" to="/profile">
+              <li className="profile-nav">
+                <CgProfile />
+              </li>
+            </Link>
           </ul>
           <button
             type="button"
             className="logout-desktop-btn"
             onClick={onLogout}
           >
-            <MdOutlineLogout /> Logout
+            {" "}
+            Logout
           </button>
         </div>
       </div>
@@ -95,6 +100,9 @@ const Header = (props) => {
                 className="nav-bar-img"
               />
             </li>
+          </Link>
+          <Link className="remove-line" to="/profile">
+            <CgProfile className="nav-bar-img profile-nav" />
           </Link>
         </ul>
       </div>

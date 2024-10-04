@@ -25,8 +25,10 @@ class Login extends Component {
     });
 
     const data = await response.json();
+    console.log(data);
     if (response.ok) {
       Cookies.set("jwt_token", data.jwtToken, { expires: 10 });
+      Cookies.set("user_id", data.userId);
       history.replace("/");
       alert("Login successful");
     } else {
@@ -79,7 +81,7 @@ class Login extends Component {
             Login
           </button>
           <p className="or-para">or</p>
-          <Link to="/register" className="link">
+          <Link to="/signup" className="link">
             <button type="button" class="login-button">
               SignUp
             </button>

@@ -1,0 +1,68 @@
+Header {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.profile-bg-container {
+  background-color: white;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.profile-bg-container h1 {
+  text-align: center;
+  color: #5f5e5e;
+  margin-bottom: 20px;
+  font-family: "Arial", sans-serif;
+  border: 2px solid #5f5e5e;
+  padding: 10px;
+  border-radius: 50px;
+}
+
+.profile-bg-container form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.profile-bg-container form div {
+  margin-bottom: 15px;
+}
+
+.profile-bg-container label {
+  margin-bottom: 0px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 16px;
+  color: #475569;
+  margin-bottom: 10px;
+}
+
+.profile-bg-container input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.profile-bg-container button {
+  width: 100%;
+  background-color: #0a62f0;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .profile-bg-container form {
+    width: 90%;
+  }
+}

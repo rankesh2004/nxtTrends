@@ -147,6 +147,39 @@
   outline: none;
 }
 
+.profile-nav {
+  font-family: "Roboto", Cursive;
+  margin: 10px;
+  font-weight: 600;
+  font-size: 25px;
+  margin-top: 15px;
+  padding-left: 7px;
+  padding-right: 7px;
+  color: #3f4957;
+  border-radius: 10px;
+}
+
+.profile-nav:hover {
+  background-color: #3f4957;
+  padding-left: 7px;
+  padding-right: 7px;
+  padding-top: 5px;
+  border-radius: 30px;
+  color: white;
+}
+
+@media screen and (max-width: 768px) {
+  .profile-nav {
+    font-size: 50px;
+    padding: 0px;
+    margin: 0px;
+  }
+  .website-logo {
+    width: 170px;
+    height: 50px;
+  }
+}
+
 .cart-count {
   font-size: 13px;
   background-color: #a5caf5;
@@ -172,6 +205,8 @@
   background: transparent;
   cursor: pointer;
   outline: none;
+  display: flex;
+  align-items: center;
 }
 
 @media screen and (min-width: 768px) {

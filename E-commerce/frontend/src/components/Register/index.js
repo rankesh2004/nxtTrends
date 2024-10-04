@@ -110,7 +110,7 @@ class Register extends Component {
             SignUp
           </button>
           <p className="or-para">or</p>
-          <Link to="/register" className="link">
+          <Link to="/login" className="link">
             <button type="button" class="login-button">
               Login
             </button>

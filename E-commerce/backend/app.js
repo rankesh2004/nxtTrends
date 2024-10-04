@@ -95,7 +95,7 @@ app.post("/login", async (req, res) => {
     if (isPasswordMatched) {
       const payload = { username: dbUser.username };
       const jwtToken = jwt.sign(payload, "MY_SECRET_TOKEN");
-      res.send({ jwtToken });
+      res.send({ jwtToken, userId: dbUser.user_id });
     } else {
       res.status(400).send("Invalid password");
     }
@@ -105,7 +105,7 @@ app.post("/login", async (req, res) => {
 // Retrieve user information (Profile)
 app.get("/users/:userId", authenticateToken, async (req, res) => {
   const { userId } = req.params;
-  const selectUserQuery = `SELECT * FROM user WHERE user_id = ${userId};`;
+  const selectUserQuery = `SELECT username, name, email FROM user WHERE user_id = ${userId};`;
   const user = await db.get(selectUserQuery);
 
   if (user) {
@@ -118,12 +118,11 @@ app.get("/users/:userId", authenticateToken, async (req, res) => {
 // Update user information
 app.put("/users/:userId", authenticateToken, async (req, res) => {
   const { userId } = req.params;
-  const { name, email, password } = req.body;
+  const { name, username, email } = req.body;
 
-  const hashedPassword = await bcrypt.hash(password, 10);
   const updateUserQuery = `
     UPDATE user
-    SET name = '${name}', email = '${email}', password = '${hashedPassword}'
+    SET name = '${name}', username = '${username}', email = '${email}'
     WHERE user_id = ${userId};
   `;
   await db.run(updateUserQuery);

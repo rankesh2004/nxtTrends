@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Register from "./components/Register";
 import Login from "./components/Login";
+import Profile from "./components/Profile";
 import Home from "./components/Home";
 import Products from "./components/Products";
 import Cart from "./components/Cart";
@@ -15,9 +16,10 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Switch>
-          <Route exact path="/register" component={Register} />
+          <Route exact path="/signup" component={Register} />
           <Route exact path="/login" component={Login} />
           <ProtectedRoute exact path="/" component={Home} />
+          <ProtectedRoute exact path="/profile" component={Profile} />
           <ProtectedRoute exact path="/cart" component={Cart} />
           <ProtectedRoute exact path="/products" component={Products} />
           <ProtectedRoute exact path="/order" component={Order} />
